@@ -109,7 +109,7 @@ table.shuba tr:last-child td{border-bottom:none}
   });
  });
  // 成績列の切替(想定脚質/騎手/調教師/種牡馬)。各行の data-* を右列に差し込む(再描画なし)
- var HEAD={kyaku:'想定脚質',jockey:'騎手',trainer:'調教師'};
+ var HEAD={kyaku:'想定脚質',jockey:'騎手 本年成績',trainer:'調教師 本年成績'};
  function setCol(tbl,col){
   var th=tbl.querySelector('.rc-h');if(th)th.textContent=HEAD[col]||'';
   var showPP=(col==='kyaku');   // 前走位置は脚質タブのときだけ表示(騎手/調教師時は馬名に幅を回す)
