@@ -40,7 +40,7 @@ body{background:#f4f6f8;color:#33383d;font-family:"Hiragino Kaku Gothic ProN","Y
   <div class="head">
     <div class="brand">HATAKE</div>
     <h1>アクセス集計</h1>
-    <div class="lock">🔒 関係者専用</div>
+    <div class="lock"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.14em" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> 関係者専用</div>
   </div>
   <div class="total">
     <div class="tcard"><div class="k">端末数（ユニーク）合計</div><div class="v"><span id="tot-uu">…</span><small>台</small></div></div>
@@ -61,7 +61,7 @@ body{background:#f4f6f8;color:#33383d;font-family:"Hiragino Kaku Gothic ProN","Y
       <div class="met pv"><div class="mk">開かれた回数</div><div class="mv"><span id="race-pv">…</span><small>回</small></div></div>
     </div>
   </div>
-  <div class="bar"><button id="rf" onclick="load()">↻ 更新</button><span class="upd" id="upd"></span></div>
+  <div class="bar"><button id="rf" onclick="load()"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.14em" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 4v5h-5"/></svg> 更新</button><span class="upd" id="upd"></span></div>
   <div class="err" id="err">取得に失敗しました。時間をおいて再度お試しください。</div>
   <div class="note">端末数＝その端末で初めて開いた時だけ+1（実来場者の目安）。開かれた回数＝表示のたび+1（延べPV）。<br>各ページを <code>?me=1</code> で一度開くと、その端末は以後カウント対象外。カルテ（トップ）は計測していません。</div>
 </div>
