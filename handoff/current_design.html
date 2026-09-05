@@ -96,14 +96,20 @@ svg.i{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-l
 .foot{font-size:11px;color:var(--faint);text-align:center;margin-top:18px}
 
 
-/* 風の場: 全面の短い矢印が風下へ静かに流れる。トラックの上は白帯が上に乗るので邪魔しない */
-.wf{fill:none;stroke:#5f8f83;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.45}
-.wfield{animation:wdrift 2.8s linear infinite}
-@keyframes wdrift{from{transform:translate(-6px,-6px);opacity:.9}to{transform:translate(6px,6px);opacity:.9}}
+/* 風: 長い矢印3本がトラック全体を北西→南東へ通過する */
+.gu{fill:none;stroke:#5f8f83;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;opacity:0;animation:sweep 4.2s linear infinite}
+.gu:nth-child(2){animation-delay:-1.4s}
+.gu:nth-child(3){animation-delay:-2.8s}
+@keyframes sweep{
+  0%{opacity:0;transform:translate(0,0)}
+  12%{opacity:.5}
+  78%{opacity:.5}
+  100%{opacity:0;transform:translate(200px,200px)}
+}
 .push{animation:pushpulse 2.4s ease-in-out infinite}
 @keyframes pushpulse{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
-@media(prefers-reduced-motion:reduce){.wfield,.push{animation:none}}
-.trackwrap{padding:10px 10px 4px}
+@media(prefers-reduced-motion:reduce){.gu,.push{animation:none}.gu{opacity:.5}}
+.trackwrap{padding:10px 10px 4px;overflow:hidden}
 </style>
 <svg width="0" height="0" style="position:absolute">
   <symbol id="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></symbol>
@@ -116,25 +122,28 @@ svg.i{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-l
   <symbol id="target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></symbol>
   <symbol id="list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></symbol>
   <symbol id="track" viewBox="0 0 320 200">
-    <!-- 風の場(面): 北西→南東へ向く短い矢印を全面に。風向きが変わればここが回る -->
-    <g class="wfield"><path class="wf" d="M15.4 19.4L24.6 28.6M23.9 22.2L24.6 28.6L18.2 27.9"/><path class="wf" d="M55.4 19.4L64.6 28.6M63.9 22.2L64.6 28.6L58.2 27.9"/><path class="wf" d="M95.4 19.4L104.6 28.6M103.9 22.2L104.6 28.6L98.2 27.9"/><path class="wf" d="M135.4 19.4L144.6 28.6M143.9 22.2L144.6 28.6L138.2 27.9"/><path class="wf" d="M175.4 19.4L184.6 28.6M183.9 22.2L184.6 28.6L178.2 27.9"/><path class="wf" d="M215.4 19.4L224.6 28.6M223.9 22.2L224.6 28.6L218.2 27.9"/><path class="wf" d="M255.4 19.4L264.6 28.6M263.9 22.2L264.6 28.6L258.2 27.9"/><path class="wf" d="M295.4 19.4L304.6 28.6M303.9 22.2L304.6 28.6L298.2 27.9"/><path class="wf" d="M31.4 51.4L40.6 60.6M39.9 54.2L40.6 60.6L34.2 59.9"/><path class="wf" d="M71.4 51.4L80.6 60.6M79.9 54.2L80.6 60.6L74.2 59.9"/><path class="wf" d="M111.4 51.4L120.6 60.6M119.9 54.2L120.6 60.6L114.2 59.9"/><path class="wf" d="M151.4 51.4L160.6 60.6M159.9 54.2L160.6 60.6L154.2 59.9"/><path class="wf" d="M191.4 51.4L200.6 60.6M199.9 54.2L200.6 60.6L194.2 59.9"/><path class="wf" d="M231.4 51.4L240.6 60.6M239.9 54.2L240.6 60.6L234.2 59.9"/><path class="wf" d="M271.4 51.4L280.6 60.6M279.9 54.2L280.6 60.6L274.2 59.9"/><path class="wf" d="M311.4 51.4L320.6 60.6M319.9 54.2L320.6 60.6L314.2 59.9"/><path class="wf" d="M15.4 83.4L24.6 92.6M23.9 86.2L24.6 92.6L18.2 91.9"/><path class="wf" d="M55.4 83.4L64.6 92.6M63.9 86.2L64.6 92.6L58.2 91.9"/><path class="wf" d="M95.4 83.4L104.6 92.6M103.9 86.2L104.6 92.6L98.2 91.9"/><path class="wf" d="M135.4 83.4L144.6 92.6M143.9 86.2L144.6 92.6L138.2 91.9"/><path class="wf" d="M175.4 83.4L184.6 92.6M183.9 86.2L184.6 92.6L178.2 91.9"/><path class="wf" d="M215.4 83.4L224.6 92.6M223.9 86.2L224.6 92.6L218.2 91.9"/><path class="wf" d="M255.4 83.4L264.6 92.6M263.9 86.2L264.6 92.6L258.2 91.9"/><path class="wf" d="M295.4 83.4L304.6 92.6M303.9 86.2L304.6 92.6L298.2 91.9"/><path class="wf" d="M31.4 115.4L40.6 124.6M39.9 118.2L40.6 124.6L34.2 123.9"/><path class="wf" d="M71.4 115.4L80.6 124.6M79.9 118.2L80.6 124.6L74.2 123.9"/><path class="wf" d="M111.4 115.4L120.6 124.6M119.9 118.2L120.6 124.6L114.2 123.9"/><path class="wf" d="M151.4 115.4L160.6 124.6M159.9 118.2L160.6 124.6L154.2 123.9"/><path class="wf" d="M191.4 115.4L200.6 124.6M199.9 118.2L200.6 124.6L194.2 123.9"/><path class="wf" d="M231.4 115.4L240.6 124.6M239.9 118.2L240.6 124.6L234.2 123.9"/><path class="wf" d="M271.4 115.4L280.6 124.6M279.9 118.2L280.6 124.6L274.2 123.9"/><path class="wf" d="M311.4 115.4L320.6 124.6M319.9 118.2L320.6 124.6L314.2 123.9"/><path class="wf" d="M15.4 147.4L24.6 156.6M23.9 150.2L24.6 156.6L18.2 155.9"/><path class="wf" d="M55.4 147.4L64.6 156.6M63.9 150.2L64.6 156.6L58.2 155.9"/><path class="wf" d="M95.4 147.4L104.6 156.6M103.9 150.2L104.6 156.6L98.2 155.9"/><path class="wf" d="M135.4 147.4L144.6 156.6M143.9 150.2L144.6 156.6L138.2 155.9"/><path class="wf" d="M175.4 147.4L184.6 156.6M183.9 150.2L184.6 156.6L178.2 155.9"/><path class="wf" d="M215.4 147.4L224.6 156.6M223.9 150.2L224.6 156.6L218.2 155.9"/><path class="wf" d="M255.4 147.4L264.6 156.6M263.9 150.2L264.6 156.6L258.2 155.9"/><path class="wf" d="M295.4 147.4L304.6 156.6M303.9 150.2L304.6 156.6L298.2 155.9"/><path class="wf" d="M31.4 179.4L40.6 188.6M39.9 182.2L40.6 188.6L34.2 187.9"/><path class="wf" d="M71.4 179.4L80.6 188.6M79.9 182.2L80.6 188.6L74.2 187.9"/><path class="wf" d="M111.4 179.4L120.6 188.6M119.9 182.2L120.6 188.6L114.2 187.9"/><path class="wf" d="M151.4 179.4L160.6 188.6M159.9 182.2L160.6 188.6L154.2 187.9"/><path class="wf" d="M191.4 179.4L200.6 188.6M199.9 182.2L200.6 188.6L194.2 187.9"/><path class="wf" d="M231.4 179.4L240.6 188.6M239.9 182.2L240.6 188.6L234.2 187.9"/><path class="wf" d="M271.4 179.4L280.6 188.6M279.9 182.2L280.6 188.6L274.2 187.9"/><path class="wf" d="M311.4 179.4L320.6 188.6M319.9 182.2L320.6 188.6L314.2 187.9"/></g>
-    <!-- トラック: 一本の帯(外周のみ・二重線なし)。右回り=直線は西側で北向き -->
+    <!-- トラック: 白い一本の帯。右回り=直線は西側で北向き、向正面は東側で南向き -->
     <rect x="110" y="20" width="100" height="160" rx="50" fill="none" stroke="#fff" stroke-width="20"/>
-    <!-- 直線(西側): 深ティールの帯 + ゴール線 + 進行方向の矢羽根(静止) -->
-    <path d="M110 134V66" stroke="#033236" stroke-width="20" fill="none"/>
-    <path d="M100 66h20" stroke="#fff" stroke-width="2.5"/>
-    <path d="M104 122l6-7 6 7M104 104l6-7 6 7M104 86l6-7 6 7" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-    <!-- 向正面(東側): 白い帯の上に進行方向の矢羽根(静止) -->
+    <!-- 進行方向の矢羽根(静止): 直線・向正面とも同じ書式 -->
+    <path d="M104 122l6-7 6 7M104 104l6-7 6 7M104 86l6-7 6 7" fill="none" stroke="#033236" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M204 78l6 7 6-7M204 96l6 7 6-7M204 114l6 7 6-7" fill="none" stroke="#033236" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-    <!-- ラベル: 帯に沿わせて同じ書式で -->
+    <!-- ゴール線(直線の入口) -->
+    <path d="M100 66h20" stroke="#033236" stroke-width="2.5"/>
+    <!-- ラベル -->
     <text x="110" y="54" font-size="10.5" fill="#033236" font-weight="800" text-anchor="middle">直線</text>
     <text x="110" y="196" font-size="9" fill="#6f847b" font-weight="700" text-anchor="middle">ゴール →北</text>
     <text x="210" y="54" font-size="10.5" fill="#6f847b" font-weight="800" text-anchor="middle">向正面</text>
-    <!-- 直線に当たる風の効き: 内へ押される向きを1本だけ強調 -->
+    <!-- 風: 長い矢印3本がトラック全体を北西から南東へ通過する -->
+    <g class="gusts">
+      <path class="gu" d="M-30 -10 L70 90 M62 82l8 8-8 8" />
+      <path class="gu" d="M40 -60 L140 40 M132 32l8 8-8 8" />
+      <path class="gu" d="M110 -110 L210 -10 M202 -18l8 8-8 8" />
+    </g>
+    <!-- 直線に当たる風の効き -->
     <path class="push" d="M66 100H96" stroke="#033236" stroke-width="3.5" fill="none" stroke-linecap="round"/>
     <path class="push" d="M89 94l7 6-7 6" stroke="#033236" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
     <text x="80" y="118" font-size="10" fill="#033236" font-weight="800" text-anchor="middle">内へ 5.0m</text>
-    <!-- 方位: 隅に小さく1つ -->
+    <!-- 方位 -->
     <circle cx="292" cy="28" r="14" fill="#fff"/>
     <path d="M292 18l5 12-5-3-5 3z" fill="#033236"/>
     <text x="292" y="49" font-size="8" fill="#6f847b" font-weight="700" text-anchor="middle">N</text>
