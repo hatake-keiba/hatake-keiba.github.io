@@ -139,10 +139,12 @@ svg.i{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-l
       <path class="gu" d="M40 -60 L140 40 M132 32l8 8-8 8" />
       <path class="gu" d="M110 -110 L210 -10 M202 -18l8 8-8 8" />
     </g>
-    <!-- 直線に当たる風の効き -->
-    <path class="push" d="M66 100H96" stroke="#033236" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-    <path class="push" d="M89 94l7 6-7 6" stroke="#033236" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    <text x="80" y="118" font-size="10" fill="#033236" font-weight="800" text-anchor="middle">内へ 5.0m</text>
+    <!-- 直線に当たる風の効き: 帯の位置から内ラチ側(中心)へ押される -->
+    <g class="push">
+      <path d="M118 100H150" stroke="#033236" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <path d="M143 94l7 6-7 6" stroke="#033236" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <text x="152" y="120" font-size="10" fill="#033236" font-weight="800" text-anchor="middle">内へ 5.0<tspan font-size="8">m/s</tspan></text>
     <!-- 方位 -->
     <circle cx="292" cy="28" r="14" fill="#fff"/>
     <path d="M292 18l5 12-5-3-5 3z" fill="#033236"/>
@@ -166,7 +168,7 @@ svg.i{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-l
   <div class="card">
     <div class="ch"><div class="ic"><svg class="i"><use href="#wind"/></svg></div><div><div class="tt">札幌競馬場</div><div class="ss">直線 北向き ・ 右回り ・ 13:00 現在</div></div><a class="rt" href="#">JRA公式 <b>写真</b></a></div>
     <div class="trackwrap"><svg class="trk" viewBox="0 0 320 200"><use href="#track"/></svg></div>
-    <div class="windrow"><div class="big num">7<small>m/s</small></div><div class="desc"><b>北西の風</b><br>直線に対して横風。内へ5.0m押される</div><span class="tag">横風</span></div>
+    <div class="windrow"><div class="big num">7<small>m/s</small></div><div class="desc"><b>北西の風</b><br>直線に対して横風。内ラチ側へ 5.0m/s の横風</div><span class="tag">横風</span></div>
   </div>
 
   <!-- 芝 -->
